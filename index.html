@@ -37,7 +37,7 @@ var myGameArea = {
     },
     stop : function() {
         clearInterval(this.interval);
-	myGameArea.gameOver();
+	    myGameArea.gameOver();
     },
     gameOver : function() {
 	myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
@@ -222,6 +222,15 @@ function clearmove() {
     myGamePiece.speedX = 0; 
     myGamePiece.speedY = 0; 
 }
+
+function pause(){
+    clearInterval(this.interval);
+}
+
+function resume(){
+    this.interval = setInterval(updateGameArea, 20);
+}
+
 function restart(){
     location.reload();
 }
