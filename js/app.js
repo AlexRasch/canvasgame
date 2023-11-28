@@ -233,6 +233,6 @@ function pause() {
 }
 
 function restart() {
-    location.reload();
+    
 }
 
