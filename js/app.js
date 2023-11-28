@@ -9,11 +9,13 @@ function startGame() {
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
     myLife = new component("20px", "Consolas", "white", 250, 20, "text");
     myGameArea.start();
+    //window.addEventListener('blur', myGameArea.gamePause);
+    //window.addEventListener('focus', myGameArea.gamePause);
 }
 
 var myGameArea = {
     gameStateRunning: true,
-    canvas: document.createElement("canvas"),
+    canvas: document.getElementById("myGameCanvas"),
     start: function () {
         this.canvas.width = 500;
         this.canvas.height = 300;
@@ -30,10 +32,18 @@ var myGameArea = {
         myGameArea.gameOver();
     },
     gamePause: function () {
+        console.log("Paused");
         clearInterval(this.interval);
     },
     gameResume: function () {
         this.interval = setInterval(updateGameArea, 20);
+    },
+    gameRestart: function() {
+        // ToDO refactor this
+        myObstacles = [];
+        myGameArea.clear();
+        startGame();
+         
     },
     gameOver: function () {
         myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
@@ -125,7 +135,6 @@ function removeObjects() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myObstacles[i].removeObject) {
-            //console.log("object should be removed");
         } else {
             myObstaclesClean.push(myObstacles[i]);
         }
@@ -233,6 +242,6 @@ function pause() {
 }
 
 function restart() {
-    location.reload();
+    myGameArea.gameRestart();
 }
 
