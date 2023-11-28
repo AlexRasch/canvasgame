@@ -37,6 +37,7 @@ var myGameArea = {
     },
     gameRestart: function() {
         console.log("HitMe");
+        
     },
     gameOver: function () {
         myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
