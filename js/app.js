@@ -9,11 +9,12 @@ function startGame() {
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
     myLife = new component("20px", "Consolas", "white", 250, 20, "text");
     myGameArea.start();
+    window.addEventListener('focus', myGameArea.gamePause);
 }
 
 var myGameArea = {
     gameStateRunning: true,
-    canvas: document.createElement("canvas"),
+    canvas: document.getElementById("myGameCanvas"),
     start: function () {
         this.canvas.width = 500;
         this.canvas.height = 300;
@@ -30,6 +31,7 @@ var myGameArea = {
         myGameArea.gameOver();
     },
     gamePause: function () {
+        console.log("Paused");
         clearInterval(this.interval);
     },
     gameResume: function () {
@@ -37,7 +39,7 @@ var myGameArea = {
     },
     gameRestart: function() {
         console.log("HitMe");
-        
+         
     },
     gameOver: function () {
         myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
