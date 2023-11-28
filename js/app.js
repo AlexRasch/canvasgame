@@ -35,6 +35,9 @@ var myGameArea = {
     gameResume: function () {
         this.interval = setInterval(updateGameArea, 20);
     },
+    gameRestart: function() {
+        console.log("HitMe");
+    },
     gameOver: function () {
         myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
         myGameOver.text = "Game Over";
@@ -125,7 +128,6 @@ function removeObjects() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myObstacles[i].removeObject) {
-            //console.log("object should be removed");
         } else {
             myObstaclesClean.push(myObstacles[i]);
         }
