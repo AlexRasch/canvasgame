@@ -9,7 +9,8 @@ function startGame() {
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
     myLife = new component("20px", "Consolas", "white", 250, 20, "text");
     myGameArea.start();
-    window.addEventListener('focus', myGameArea.gamePause);
+    //window.addEventListener('blur', myGameArea.gamePause);
+    //window.addEventListener('focus', myGameArea.gamePause);
 }
 
 var myGameArea = {
@@ -38,7 +39,10 @@ var myGameArea = {
         this.interval = setInterval(updateGameArea, 20);
     },
     gameRestart: function() {
-        console.log("HitMe");
+        // ToDO refactor this
+        myObstacles = [];
+        myGameArea.clear();
+        startGame();
          
     },
     gameOver: function () {
@@ -238,6 +242,6 @@ function pause() {
 }
 
 function restart() {
-    
+    myGameArea.gameRestart();
 }
 
