@@ -223,7 +223,11 @@ function movedown() {
 }
 
 function moveleft() {
-    myGamePiece.speedX = -1;
+    if(myGamePiece.X <= 0){
+        myGamePiece.X = 1;
+    }else{
+        myGamePiece.speedX = -1;
+    }
 }
 
 function moveright() {
