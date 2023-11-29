@@ -162,29 +162,29 @@ function everyinterval(n) {
 /* User event */
 addEventListener("keydown", (event) => {
     //console.log("Keydown: " + event.key);
-    switch (event.key) {
+    switch (event.key.toLowerCase()) {
         case "w":
             moveup();
             break;
-        case "ArrowUp":
+        case "arrowup":
             moveup();
             break;
         case "a":
             moveleft();
             break;
-        case "ArrowLeft":
+        case "arrowleft":
             moveleft();
             break;
         case "d":
             moveright();
             break;
-        case "ArrowRight":
+        case "arrowright":
             moveright();
             break;
         case "s":
             movedown();
             break;
-        case "ArrowDown":
+        case "arrowdown":
             movedown();
             break;
         // Game related
