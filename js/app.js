@@ -110,18 +110,10 @@ function updateGameArea() {
     myGameArea.clear();
     myGameArea.frameNo += 1;
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
-        x = myGameArea.canvas.width;
-        minHeight = 20;
-        maxHeight = 200;
-        height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-        minGap = 50;
-        maxGap = 200;
-        gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-        myObstacles.push(new component(10, height, "green", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+        createObstacles();
     }
-    removeObjects();
-    redrawObjects();
+    removeObstacles();
+    redrawObstacles();
     myScore.text = "SCORE:" + myGameArea.frameNo;
     myScore.update();
     myLife.text = "LIFE:" + playerLife;
@@ -130,8 +122,19 @@ function updateGameArea() {
     myGamePiece.update();
 }
 
+function createObstacles(){
+    x = myGameArea.canvas.width;
+    minHeight = 20;
+    maxHeight = 200;
+    height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
+    minGap = 50;
+    maxGap = 200;
+    gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
+    myObstacles.push(new component(10, height, "green", x, 0));
+    myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+}
 
-function removeObjects() {
+function removeObstacles() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myObstacles[i].removeObject) {
@@ -143,7 +146,7 @@ function removeObjects() {
     myObstacles = myObstaclesClean;
 }
 
-function redrawObjects() {
+function redrawObstacles() {
     for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].speedX = -1;
         myObstacles[i].newPos();
