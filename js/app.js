@@ -1,5 +1,4 @@
 var myGamePiece;
-var myGameBoss;
 var myObstacles = [];
 var myScore;
 var playerLife = 0;
@@ -116,7 +115,7 @@ function updateGameArea() {
     }
 
     if(intervalSpawnBoss()){
-        myGameBoss = new component(40, 40, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height / 2, "boss");
+        myGameBoss = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height / 2, "boss");
         myObstacles.push(myGameBoss);
     }
     removeObstacles();
