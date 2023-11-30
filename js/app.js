@@ -1,4 +1,5 @@
 var myGamePiece;
+var myGameBoss;
 var myObstacles = [];
 var myScore;
 var playerLife = 0;
@@ -112,7 +113,8 @@ function updateGameArea() {
     if (myGameArea.frameNo == 1 || everyinterval(200)) {
         
         if(intervalSpawnBoss()){
-
+            myGameBoss = new component(40, 40, "blue", 150, 150, "boss");
+            myObstacles.push(myGameBoss);
         }else{
             createObstacles();
         }
