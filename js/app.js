@@ -110,15 +110,14 @@ function updateGameArea() {
     }
     myGameArea.clear();
     myGameArea.frameNo += 1;
+    // Todo refactor this
     if (myGameArea.frameNo == 1 || everyinterval(200)) {
-        
-        if(intervalSpawnBoss()){
-            myGameBoss = new component(40, 40, "blue", 150, 150, "boss");
-            myObstacles.push(myGameBoss);
-        }else{
             createObstacles();
-        }
-        
+    }
+
+    if(intervalSpawnBoss()){
+        myGameBoss = new component(40, 40, "blue", 150, 150, "boss");
+        myObstacles.push(myGameBoss);
     }
     removeObstacles();
     redrawObstacles();
