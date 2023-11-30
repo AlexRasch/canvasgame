@@ -143,7 +143,7 @@ function createObstacles(){
 function removeObstacles() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
-        if (!myObstacles[i].removeObject || myObstacles[i].x < -1) {
+        if (!myObstacles[i].removeObject || myObstacles[i].x > -1) {
             myObstaclesClean.push(myObstacles[i]);
         }
     }
