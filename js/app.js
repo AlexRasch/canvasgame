@@ -144,7 +144,7 @@ function createObstacles(){
 function removeObstacles() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
-        if (!myObstacles[i].removeObject) {
+        if (!myObstacles[i].removeObject || myObstacles[0].x > 0) {
             myObstaclesClean.push(myObstacles[i]);
         }
     }
