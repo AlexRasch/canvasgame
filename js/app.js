@@ -115,7 +115,7 @@ function updateGameArea() {
     }
 
     if(intervalSpawnBoss()){
-        myGameBoss = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height / 2, "boss");
+        myGameBoss = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
         myObstacles.push(myGameBoss);
     }
     removeObstacles();
