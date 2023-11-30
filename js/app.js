@@ -143,10 +143,9 @@ function createObstacles(){
 function removeObstacles() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
-        if (!myObstacles[i].removeObject) {
+        if (!myObstacles[i].removeObject || myObstacles[i].x < -1) {
             myObstaclesClean.push(myObstacles[i]);
         }
-        // Out of boundaries 
     }
     myObstacles = myObstaclesClean;
 }
@@ -161,9 +160,6 @@ function redrawObstacles() {
         if(myObstacles[i].type == "boss"){
             if(myObstacles[i].y > myGameArea.canvas.height){
                 myObstacles[i].speedY = -1;
-            }
-            else if(myObstacles[i].y < 0){
-                myObstacles[i].speedY = 1;
             }
                 
         }
