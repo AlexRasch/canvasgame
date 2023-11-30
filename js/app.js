@@ -110,7 +110,13 @@ function updateGameArea() {
     myGameArea.clear();
     myGameArea.frameNo += 1;
     if (myGameArea.frameNo == 1 || everyinterval(200)) {
-        createObstacles();
+        
+        if(intervalSpawnBoss()){
+
+        }else{
+            createObstacles();
+        }
+        
     }
     removeObstacles();
     redrawObstacles();
@@ -140,7 +146,6 @@ function removeObstacles() {
         if (!myObstacles[i].removeObject) {
             myObstaclesClean.push(myObstacles[i]);
         }
-
     }
     myObstacles = myObstaclesClean;
 }
@@ -155,6 +160,11 @@ function redrawObstacles() {
 
 function everyinterval(n) {
     if ((myGameArea.frameNo / n) % 1 == 0) { return true; }
+    return false;
+}
+
+function intervalSpawnBoss(){
+    if(myGameArea.frameNo % 5000 == 0) {return true;}
     return false;
 }
 
