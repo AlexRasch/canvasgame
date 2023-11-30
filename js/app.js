@@ -137,7 +137,7 @@ function createObstacles(){
     maxGap = 200;
     gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
     myObstacles.push(new component(10, height, "green", myGameArea.canvas.width, 0));
-    myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "green", myGameArea.canvas.width, height + gap));
+    myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "green", myGameArea.canvas.width / 2, height + gap));
 }
 
 function removeObstacles() {
