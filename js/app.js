@@ -17,6 +17,7 @@ var myGameArea = {
     gameStateRunning: true,
     canvas: document.getElementById("myGameCanvas"),
     start: function () {
+        this.gameStateRunning = true;
         this.canvas.width = 500;
         this.canvas.height = 300;
         this.context = this.canvas.getContext("2d", { alpha: false });
@@ -94,7 +95,6 @@ function component(width, height, color, x, y, type, removeObject = false) {
 }
 
 function updateGameArea() {
-    var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
             if (playerLife > 0) {
@@ -123,7 +123,7 @@ function updateGameArea() {
 }
 
 function createObstacles(){
-    x = myGameArea.canvas.width;
+    var height, gap, minHeight, maxHeight, minGap, maxGap;
     minHeight = 20;
     maxHeight = 200;
     height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
@@ -131,14 +131,13 @@ function createObstacles(){
     maxGap = 200;
     gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
     myObstacles.push(new component(10, height, "green", x, 0));
-    myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+    myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "green", myGameArea.canvas.width, height + gap));
 }
 
 function removeObstacles() {
     var myObstaclesClean = [];
     for (i = 0; i < myObstacles.length; i += 1) {
-        if (myObstacles[i].removeObject) {
-        } else {
+        if (!myObstacles[i].removeObject) {
             myObstaclesClean.push(myObstacles[i]);
         }
 
