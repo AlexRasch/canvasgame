@@ -156,9 +156,15 @@ function redrawObstacles() {
         myObstacles[i].speedX = -1;
         myObstacles[i].newPos();
         myObstacles[i].update();
-
+        
+        // Todo refactor this D:
         if(myObstacles[i].type == "boss"){
-            myObstacles[i].speedY = -1;
+            if(myObstacles[i].y < 0){
+                myObstacles[i].speedY = -1;
+            }else{
+                myObstacles[i].speedY = 1;
+            }
+                
         }
     }
 }
