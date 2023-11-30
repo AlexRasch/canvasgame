@@ -146,6 +146,7 @@ function removeObstacles() {
         if (!myObstacles[i].removeObject) {
             myObstaclesClean.push(myObstacles[i]);
         }
+        // Out of boundaries 
     }
     myObstacles = myObstaclesClean;
 }
@@ -155,7 +156,17 @@ function redrawObstacles() {
         myObstacles[i].speedX = -1;
         myObstacles[i].newPos();
         myObstacles[i].update();
+
+        if(myObstacles[i].type == "boss"){
+            myObstacles[i].speedY = -1;
+        }
     }
+}
+
+function bossMove(){
+    // get only boss
+    // check boss pos
+    // move only boss
 }
 
 function everyinterval(n) {
