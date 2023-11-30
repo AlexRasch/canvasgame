@@ -161,6 +161,8 @@ function redrawObstacles() {
         if(myObstacles[i].type == "boss"){
             if(myObstacles[i].y > myGameArea.canvas.height){
                 myObstacles[i].speedY = 1;
+                myObstacles[i].newPos();
+                myObstacles[i].update();
             }
                 
         }
