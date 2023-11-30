@@ -159,7 +159,7 @@ function redrawObstacles() {
         
         // Todo refactor this D:
         if(myObstacles[i].type == "boss"){
-            if(myObstacles[i].y < myGameArea.canvas.height){
+            if(myObstacles[i].y > myGameArea.canvas.height){
                 myObstacles[i].speedY = 1;
             }
                 
