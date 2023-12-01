@@ -5,7 +5,7 @@ var playerLife = 0;
 
 function startGame() {
     playerLife = 1;
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    myGamePiece = new component(30, 30, "green", 10, 120);
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
     myLife = new component("20px", "Consolas", "white", 250, 20, "text");
     myGameArea.start();
@@ -115,7 +115,7 @@ function updateGameArea() {
     }
 
     if(intervalSpawnBoss()){
-        myGameBoss = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+        myGameBoss = new component(20, 20, "red", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
         myGameBoss.speedY = -1;
         myObstacles.push(myGameBoss);
     }
@@ -137,8 +137,8 @@ function createObstacles(){
     minGap = 70;
     maxGap = 200;
     gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-    myObstacles.push(new component(10, height, "green", myGameArea.canvas.width, 0));
-    myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "green", myGameArea.canvas.width, height + gap));
+    myObstacles.push(new component(10, height, "red", myGameArea.canvas.width, 0));
+    myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "red", myGameArea.canvas.width, height + gap));
 }
 
 function removeObstacles() {
@@ -180,13 +180,15 @@ function bossMove(){
 }
 
 function everyinterval(n) {
-    if ((myGameArea.frameNo / n) % 1 == 0) { return true; }
-    return false;
+    return (myGameArea.frameNo / n) % 1 == 0;
+    //if ((myGameArea.frameNo / n) % 1 == 0) { return true; }
+    //return false;
 }
 
 function intervalSpawnBoss(){
-    if(myGameArea.frameNo % 5000 == 0) {return true;}
-    return false;
+    return myGameArea.frameNo % 5000 == 0;
+    //if(myGameArea.frameNo % 5000 == 0) {return true;}
+    //return false;
 }
 
 /* User event */
@@ -241,7 +243,6 @@ function moveup() {
     } else {
         myGamePiece.speedY = -1;
     }
-    //console.log(myGamePiece.y);
 }
 
 function movedown() {
