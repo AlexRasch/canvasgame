@@ -1,4 +1,4 @@
-import GetRandomInt from '/js/util.js';
+import { GetRandomInt } from './util.js';
 
 var myGamePiece;
 var myObstacles = [];
@@ -281,4 +281,4 @@ function restart() {
     myGameArea.gameRestart();
 }
 
-export default startGame;
+export { startGame };

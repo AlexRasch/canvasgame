@@ -3,4 +3,4 @@ function GetRandomInt(iNumber){
 }
 
 
-export default GetRandomInt;
+export { GetRandomInt };
