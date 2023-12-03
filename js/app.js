@@ -5,7 +5,7 @@ var myObstacles = [];
 var myScore;
 var playerLife = 0;
 
-function startGame() {
+export function startGame() {
     playerLife = 3;
     myGamePiece = new component(30, 30, "green", 10, 120);
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
