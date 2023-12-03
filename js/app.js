@@ -109,6 +109,7 @@ function updateGameArea() {
     }
     myGameArea.clear();
     myGameArea.frameNo += 1;
+    
     // Todo refactor this
     if (myGameArea.frameNo == 1 || everyinterval(200)) {
             createObstacles();
@@ -181,14 +182,10 @@ function bossMove(){
 
 function everyinterval(n) {
     return (myGameArea.frameNo / n) % 1 == 0;
-    //if ((myGameArea.frameNo / n) % 1 == 0) { return true; }
-    //return false;
 }
 
 function intervalSpawnBoss(){
     return myGameArea.frameNo % 5000 == 0;
-    //if(myGameArea.frameNo % 5000 == 0) {return true;}
-    //return false;
 }
 
 /* User event */
@@ -230,7 +227,6 @@ addEventListener("keydown", (event) => {
 });
 
 addEventListener("keyup", (event) => {
-    //console.log("Keyup: " + event.key);
     clearmove();
 });
 
