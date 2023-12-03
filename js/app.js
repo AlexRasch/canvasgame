@@ -3,9 +3,15 @@ import { GetRandomInt } from './util.js';
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+var myLife;
 var playerLife = 0;
 
-export function startGame() {
+document.addEventListener("DOMContentLoaded", (event) => {
+    startGame();
+});
+
+
+function startGame() {
     playerLife = 3;
     myGamePiece = new component(30, 30, "green", 10, 120);
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
@@ -65,7 +71,7 @@ function component(width, height, color, x, y, type, removeObject = false) {
     this.y = y;
     this.removeObject = removeObject;
     this.update = function () {
-        ctx = myGameArea.context;
+        const ctx = myGameArea.context;
         if (this.type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
@@ -97,7 +103,7 @@ function component(width, height, color, x, y, type, removeObject = false) {
 }
 
 function updateGameArea() {
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (var i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
             if (playerLife > 0) {
                 playerLife -= 1;
@@ -146,7 +152,7 @@ function createObstacles(){
 
 function removeObstacles() {
     var myObstaclesClean = [];
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (var i = 0; i < myObstacles.length; i += 1) {
 
         if(myObstacles[i].x < 0){
             continue;
@@ -159,7 +165,7 @@ function removeObstacles() {
 }
 
 function redrawObstacles() {
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (var i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].speedX = -1;
         myObstacles[i].newPos();
         myObstacles[i].update();
@@ -251,7 +257,7 @@ function movedown() {
     }
 }
 
-function moveleft() {
+export function moveleft() {
     if(myGamePiece.x <= 0){
         myGamePiece.x = 1;
     }else{
@@ -263,7 +269,7 @@ function moveright() {
     myGamePiece.speedX = 1;
 }
 
-function clearmove() {
+export function clearmove() {
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
 }
@@ -280,5 +286,3 @@ function pause() {
 function restart() {
     myGameArea.gameRestart();
 }
-
-export { startGame };
