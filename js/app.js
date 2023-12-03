@@ -1,10 +1,12 @@
+import GetRandomInt from '/js/util.js';
+
 var myGamePiece;
 var myObstacles = [];
 var myScore;
 var playerLife = 0;
 
 function startGame() {
-    playerLife = 1;
+    playerLife = 3;
     myGamePiece = new component(30, 30, "green", 10, 120);
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
     myLife = new component("20px", "Consolas", "white", 250, 20, "text");
@@ -279,3 +281,4 @@ function restart() {
     myGameArea.gameRestart();
 }
 
+export default startGame;
