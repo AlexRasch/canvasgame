@@ -55,7 +55,7 @@ var myGameArea = {
          
     },
     gameOver: function () {
-        myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
+        var myGameOver = new component("40px", "Consolas", "red", 150, 150, "text");
         myGameOver.text = "Game Over";
         myGameOver.update();
     }
@@ -123,10 +123,8 @@ function updateGameArea() {
             createObstacles();
     }
 
-    if(intervalSpawnBoss()){
-        myGameBoss = new component(20, 20, "red", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
-        myGameBoss.speedY = -1;
-        myObstacles.push(myGameBoss);
+    if(intervalSpawnEvent()){
+        createEvent();
     }
     removeObstacles();
     redrawObstacles();
@@ -136,6 +134,36 @@ function updateGameArea() {
     myLife.update();
     myGamePiece.newPos();
     myGamePiece.update();
+}
+
+
+function createEvent(){
+    var iEvent = GetRandomInt(0,5);
+    console.log("Creating event: " + iEvent);
+    var myEvent;
+    switch (iEvent){
+        case 0: // Life
+            myEvent = new component(20, 20, "green", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            break;
+        case 1: // Shrink (?)
+            myEvent = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            break;
+        case 2:
+            myEvent = new component(20, 20, "yellow", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            break;
+        case 3:
+            myEvent = new component(20, 20, "pink", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            break;
+        case 4:
+            myEvent = new component(20, 20, "white", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            break;
+        default:
+            myEvent = new component(20, 20, "red", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            myEvent.speedY = -1;
+            break;
+    }
+    // Add event to array of obstacles
+    myObstacles.push(myEvent);
 }
 
 function createObstacles(){
@@ -192,8 +220,12 @@ function everyinterval(n) {
     return (myGameArea.frameNo / n) % 1 == 0;
 }
 
-function intervalSpawnBoss(){
+function intervalSpawnEvent(){
     return myGameArea.frameNo % 5000 == 0;
+}
+
+function createEvent(){
+
 }
 
 /* User event */
