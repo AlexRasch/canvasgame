@@ -65,6 +65,7 @@ function component(width, height, color, x, y, type, removeObject = false) {
     this.type = type;
     this.width = width;
     this.height = height;
+    this.color = color;
     this.speedX = 0;
     this.speedY = 0;
     this.x = x;
@@ -105,6 +106,21 @@ function component(width, height, color, x, y, type, removeObject = false) {
 function updateGameArea() {
     for (var i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+            
+            // Move this to a new function 
+            if(myObstacles[i].type == "powerup"){
+                console.log("Powerup collison");
+                switch(myObstacles.color){
+                    case "green":
+                        myLife = myLife + 1;
+                        break;
+                    default:
+                        break;
+                }
+                continue;
+            }
+
+
             if (playerLife > 1) {
                 playerLife -= 1;
                 myObstacles[i].removeObject = true;
