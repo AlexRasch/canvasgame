@@ -112,7 +112,7 @@ function updateGameArea() {
                 console.log("Powerup collison");
                 switch(myObstacles[i].color){
                     case "green":
-                        myLife = myLife + 1;
+                        playerLife = playerLife + 1;
                         break;
                         case "blue":
                         myGamePiece.width = myGamePiece.width -1;
