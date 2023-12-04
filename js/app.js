@@ -224,10 +224,6 @@ function intervalSpawnEvent(){
     return myGameArea.frameNo % 5000 == 0;
 }
 
-function createEvent(){
-
-}
-
 /* User event */
 addEventListener("keydown", (event) => {
     //console.log("Keydown: " + event.key);
