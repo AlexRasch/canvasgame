@@ -110,7 +110,7 @@ function updateGameArea() {
             // Move this to a new function 
             if(myObstacles[i].type == "powerup"){
                 console.log("Powerup collison");
-                switch(myObstacles.color){
+                switch(myObstacles[i].color){
                     case "green":
                         myLife = myLife + 1;
                         break;
