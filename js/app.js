@@ -105,7 +105,7 @@ function component(width, height, color, x, y, type, removeObject = false) {
 function updateGameArea() {
     for (var i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
-            if (playerLife > 0) {
+            if (playerLife > 1) {
                 playerLife -= 1;
                 myObstacles[i].removeObject = true;
                 continue;
