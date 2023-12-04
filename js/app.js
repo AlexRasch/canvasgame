@@ -117,6 +117,7 @@ function updateGameArea() {
                     default:
                         break;
                 }
+                myObstacles[i].removeObject = true;
                 continue;
             }
 
