@@ -121,6 +121,9 @@ function updateGameArea() {
                     case "yellow":
                         myGameArea.frameNo += 2000; // Todo frameNo is equal to score kinda confusing
                         break;
+                    case "purple": // increase gap
+
+                        break;
                     case "white":
                         myGamePiece.color = white;
                         break;
@@ -165,7 +168,7 @@ function updateGameArea() {
 
 
 function createEvent(){
-    var iEvent = GetRandomInt(0,10);
+    var iEvent = GetRandomInt(0,6);
     console.log("Creating event: " + iEvent);
     var myEvent;
     switch (iEvent){
