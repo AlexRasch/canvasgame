@@ -101,7 +101,7 @@ function component(width, height, color, x, y, type, removeObject = false) {
         return crash;
     }
 }
-
+// Todo add a array for powerups
 function updateGameArea() {
     for (var i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
@@ -138,31 +138,31 @@ function updateGameArea() {
 
 
 function createEvent(){
-    var iEvent = GetRandomInt(0,5);
+    var iEvent = GetRandomInt(0,10);
     console.log("Creating event: " + iEvent);
     var myEvent;
     switch (iEvent){
         case 0: // Life
-            myEvent = new component(20, 20, "green", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            myEvent = new component(20, 20, "green", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         case 1: // Shrink (?)
-            myEvent = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            myEvent = new component(20, 20, "blue", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         case 2:
-            myEvent = new component(20, 20, "yellow", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            myEvent = new component(20, 20, "yellow", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         case 3:
-            myEvent = new component(20, 20, "pink", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            myEvent = new component(20, 20, "pink", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         case 4:
-            myEvent = new component(20, 20, "white", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
+            myEvent = new component(20, 20, "white", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         default:
             myEvent = new component(20, 20, "red", myGameArea.canvas.width + 40, myGameArea.canvas.height, "boss");
-            myEvent.speedY = -1;
             break;
     }
     // Add event to array of obstacles
+    myEvent.speedY = -1;
     myObstacles.push(myEvent);
 }
 
@@ -199,7 +199,7 @@ function redrawObstacles() {
         myObstacles[i].update();
         
         // Todo refactor this D:
-        if(myObstacles[i].type == "boss"){
+        if(myObstacles[i].type == "boss" || myObstacles[i].type == "powerup"){
             if(myObstacles[i].y < 0){
                 myObstacles[i].speedY = 1;
                 myObstacles[i].newPos();
@@ -221,7 +221,7 @@ function everyinterval(n) {
 }
 
 function intervalSpawnEvent(){
-    return myGameArea.frameNo % 5000 == 0;
+    return myGameArea.frameNo % 4000 == 0;
 }
 
 /* User event */
