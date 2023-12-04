@@ -112,11 +112,17 @@ function updateGameArea() {
                 console.log("Powerup collison");
                 switch(myObstacles[i].color){
                     case "green":
-                        playerLife = playerLife + 1;
+                        playerLife += 1;
                         break;
                     case "blue":
                         myGamePiece.width = myGamePiece.width -1;
                         myGamePiece.height = myGamePiece.height -1;
+                        break;
+                    case "yellow":
+                        myGameArea.frameNo += 2000; // Todo frameNo is equal to score kinda confusing
+                        break;
+                    case "white":
+                        myGamePiece.color = white;
                         break;
                     default:
                         break;
