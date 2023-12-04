@@ -114,6 +114,10 @@ function updateGameArea() {
                     case "green":
                         myLife = myLife + 1;
                         break;
+                        case "blue":
+                        myGamePiece.width = myGamePiece.width -1;
+                        myGamePiece.height = myGamePiece.height -1;
+                        break;
                     default:
                         break;
                 }
