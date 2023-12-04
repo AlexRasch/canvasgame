@@ -42,9 +42,13 @@ var myGameArea = {
     },
     gamePause: function () {
         console.log("Paused");
+        var myGamePaus = new component("40px", "Consolas", "red", 150, 150, "text");
+        myGamePaus.text = "Paused";
+        myGamePaus.update();
         clearInterval(this.interval);
     },
     gameResume: function () {
+        console.log("Resume");
         this.interval = setInterval(updateGameArea, 20);
     },
     gameRestart: function() {
