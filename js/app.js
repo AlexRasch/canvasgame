@@ -112,9 +112,9 @@ function updateGameArea() {
                 console.log("Powerup collison");
                 switch(myObstacles[i].color){
                     case "green":
-                        myLife = myLife + 1;
+                        playerLife = playerLife + 1;
                         break;
-                        case "blue":
+                    case "blue":
                         myGamePiece.width = myGamePiece.width -1;
                         myGamePiece.height = myGamePiece.height -1;
                         break;
@@ -173,7 +173,7 @@ function createEvent(){
             myEvent = new component(20, 20, "yellow", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         case 3:
-            myEvent = new component(20, 20, "pink", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
+            myEvent = new component(20, 20, "purple", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
             break;
         case 4:
             myEvent = new component(20, 20, "white", myGameArea.canvas.width + 40, myGameArea.canvas.height, "powerup");
