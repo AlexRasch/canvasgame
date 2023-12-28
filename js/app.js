@@ -129,7 +129,7 @@ function updateGameArea() {
 
                         break;
                     case "white":
-                        myGamePiece.color = white;
+                        myGamePiece.color = "white";
                         break;
                     default:
                         break;
@@ -205,8 +205,8 @@ function createObstacles(){
     minHeight = 20;
     maxHeight = 200;
     height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-    minGap = 70;
-    maxGap = 200;
+    minGap = 80;
+    maxGap = 180;
     gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
     myObstacles.push(new component(10, height, "red", myGameArea.canvas.width, 0));
     myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "red", myGameArea.canvas.width, height + gap));
