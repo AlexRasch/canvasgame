@@ -162,12 +162,22 @@ function updateGameArea() {
     if(intervalSpawnEvent()){
         createEvent();
     }
+
+    if(intervalIncreaseDifficult()){
+        if(myGameDifficult < 10){
+            myGameDifficult += 1;
+            console.log("Game difficult increase by 1"); 
+        }
+    }
+
     removeObstacles();
     redrawObstacles();
+
     myScore.text = "SCORE:" + myGameArea.frameNo;
     myScore.update();
     myLife.text = "LIFE:" + playerLife;
     myLife.update();
+    
     myGamePiece.newPos();
     myGamePiece.update();
 }
@@ -258,6 +268,10 @@ function everyinterval(n) {
 
 function intervalSpawnEvent(){
     return myGameArea.frameNo % 4000 == 0;
+}
+
+function intervalIncreaseDifficult(){
+    return myGameArea.frameNo % 10000 == 0;
 }
 
 /* User event */
