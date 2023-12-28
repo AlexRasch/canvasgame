@@ -203,15 +203,16 @@ function createEvent(){
 }
 
 function createObstacles(){
-    var height, gap, minHeight, maxHeight, minGap, maxGap;
+    var height, width, gap, minHeight, maxHeight, minGap, maxGap;
     minHeight = 20;
     maxHeight = 200;
     height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
+    width = 10 + myGameDifficult;
     minGap = 80;
     maxGap = 180;
     gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap) - myGameDifficult; // Decrease gap based on player progress
-    myObstacles.push(new component(10, height, "red", myGameArea.canvas.width, 0));
-    myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "red", myGameArea.canvas.width, height + gap));
+    myObstacles.push(new component(width, height, "red", myGameArea.canvas.width, 0));
+    myObstacles.push(new component(width, myGameArea.canvas.width - height - gap, "red", myGameArea.canvas.width, height + gap));
 }
 
 function removeObstacles() {
