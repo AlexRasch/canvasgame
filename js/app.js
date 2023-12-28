@@ -128,7 +128,7 @@ function updateGameArea() {
                         myGameArea.frameNo += 2000; // Todo frameNo is equal to score kinda confusing
                         break;
                     case "purple": // increase gap
-
+                        
                         break;
                     case "white":
                         myGamePiece.color = "white";
