@@ -1,6 +1,7 @@
 import { GetRandomInt } from './util.js';
 
 var myGamePiece;
+var myGameDifficult;
 var myObstacles = [];
 var myScore;
 var myLife;
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function startGame() {
     playerLife = 3;
+    myGameDifficult = 1;
     myGamePiece = new component(30, 30, "green", 10, 120);
     myScore = new component("20px", "Consolas", "white", 350, 20, "text");
     myLife = new component("20px", "Consolas", "white", 250, 20, "text");
@@ -207,15 +209,14 @@ function createObstacles(){
     height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
     minGap = 80;
     maxGap = 180;
-    gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
+    gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap) - myGameDifficult; // Decrease gap based on player progress
     myObstacles.push(new component(10, height, "red", myGameArea.canvas.width, 0));
     myObstacles.push(new component(10, myGameArea.canvas.width - height - gap, "red", myGameArea.canvas.width, height + gap));
 }
 
 function removeObstacles() {
     var myObstaclesClean = [];
-    for (var i = 0; i < myObstacles.length; i += 1) {
-
+    for (var i = 0; i < myObstacles.length; i++) {
         if(myObstacles[i].x < 0){
             continue;
         }
